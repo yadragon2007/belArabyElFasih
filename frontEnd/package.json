@@ -1,0 +1,32 @@
+{
+  "name": "belarabyelfasi7",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@flaticon/flaticon-uicons": "^3.3.1",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "axios": "^1.7.2",
+    "bootstrap": "^4.6.0",
+    "next": "^14.2.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-qrcode-logo": "^3.0.0",
+    "swr": "^2.2.5"
+  },
+  "proxy": "http://localhost:8080",
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.10"
+  }
+}

@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+  letter-spacing: 1px;
+}
+
+:root {
+  --gray: rgb(165, 161, 161);
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+header {
+  height: 150px;
+  width: 100%;
+  gap: 20px;
+  max-width: 100vw;
+  position: absolute;
+
+}
+
+header div {
+  gap: 20px;
+}
+
+.link {
+  width: 500px;
+}
+
+.link img {
+  width: 125px;
+  border-radius: 100%;
+}
+
+.carousel {
+  width: 100vw;
+}
+
+.carousel .carousel-item img {
+  max-height: 100vh;
+  filter: brightness(50%);
+}
+
+.carousel .loginCarousel {
+  text-align: center;
+
+}
+
+.outline {
+  outline: none;
+}
+
+.carousel .loginCarousel input[type=text],
+.carousel .loginCarousel input[type=password] {
+  float: left;
+  margin: 0 5px;
+  outline: none;
+}
+
+.carousel h1 {
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.carousel .carousel-caption a {
+  padding: 10px 5px;
+  margin: 10px 20px;
+  width: 130px;
+}
+
+.profile .collapsed {
+  cursor: pointer;
+}
+
+
+.ppp {
+  gap: 10px;
+}
+
+.hr90 {
+  border-left: 1px solid #6c757d;
+  height: 100vh;
+}
+
+input {
+  outline: none;
+}
+
+@media screen and (min-width:0) and (max-width:768px) {
+  header {
+    height: 200px;
+
+  }
+
+  header div {
+    justify-content: center;
+    width: 100%;
+    /* height: 250px; */
+    align-items: center;
+    margin: auto;
+  }
+
+  footer form {
+    width: 250px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width:768px) and (max-width:990px) {
+  footer form {
+    width: 500px;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .profileDescription {
+    text-align: center;
+    margin: 40px;
+  }
+
+  header {
+    font-size: small;
+  }
+
+  header img {
+    width: 20px;
+  }
+
+  .carousel h1 {
+    font-size: 20px;
+  }
+
+  .carousel a {
+    padding: 20px 10px;
+  }
+
+  .subjectVP .cardVideo {
+    max-width: 200px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .subjectVP .card {
+    width: 100%;
+  }
+
+}
+
+.questionDashBoard .question div {
+  max-width: 35px;
+}
+
+/* verification Img animation*/
+.verificationImg {
+  animation: 3s verificationImg;
+}
+
+@keyframes verificationImg {
+  from {
+    filter: brightness(30%);
+  }
+
+  to {
+    filter: brightness(100%);
+  }
+}
+
+/* dash board */
+.dashBoardA {
+  transition: .1s;
+  text-decoration: none;
+  border-radius: 10px;
+  height: 150px;
+  border: 2px solid #000;
+}
+
+.dashBoardA:hover {
+  text-decoration: none;
+  transform: scaley(1.07);
+}

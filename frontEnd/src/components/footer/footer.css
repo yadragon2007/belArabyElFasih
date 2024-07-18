@@ -1,0 +1,40 @@
+footer {
+  text-align: center;
+}
+
+footer input[type=submit] {
+  padding: 5px 25px;
+  margin-bottom: 10px;
+}
+
+footer div ul {
+  list-style: none;
+
+}
+
+footer div ul a,
+footer div ul li {
+  text-decoration: none;
+  transition: 1s;
+  color: #6c757d;
+}
+
+footer div ul li:hover,
+footer div ul a:hover {
+  color: #f8f9fa;
+  transform: scale(1.5);
+}
+
+@media screen and (min-width:0) and (max-width:768px) {
+  footer form {
+    width: 250px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width:768px) and (max-width:990px) {
+  footer form {
+    width: 500px;
+    margin: auto;
+  }
+}
