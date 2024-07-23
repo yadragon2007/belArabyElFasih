@@ -7,7 +7,7 @@ const QrCodeScanner = () => {
   useEffect(() => {
     const html5QrcodeScanner = new Html5QrcodeScanner(
       "reader",
-      { fps: 10, qrbox: { width: 250, height: 250 } },
+      { fps: 60, qrbox: { width: 250, height: 250 } },
       false
     );
 
@@ -20,7 +20,6 @@ const QrCodeScanner = () => {
         console.warn(error);
       }
     );
-
     return () => {
       html5QrcodeScanner.clear();
     };
