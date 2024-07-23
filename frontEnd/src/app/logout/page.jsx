@@ -1,16 +1,18 @@
-"use server"
+"use client"
 import Footer from 'components/footer/footer';
 import Nav from 'components/nav/nav';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 
 
 const logOut = () => {
-  const removeToken = () => {
-    // localStorage.removeItem("Token")
-  }
-  removeToken();
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // This code runs only in the browser
+      localStorage.removeItem("Token")
+    }
+  }, []);
   return (
     <div className="row flex-column align-items-center" style={{ margin: "0" }}>
       <Nav />
@@ -24,3 +26,7 @@ const logOut = () => {
 }
 
 export default logOut;
+function setData(storedData) {
+  throw new Error('Function not implemented.');
+}
+
