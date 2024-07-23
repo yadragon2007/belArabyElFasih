@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import envConfig from "../config/envConfigrations.js";
-import Assistants from "../models/accountsModel.js";
 import Accounts from "../models/accountsModel.js";
 
 // @route   PSOT api/assistants/

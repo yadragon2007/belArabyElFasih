@@ -33,6 +33,15 @@ app.use(addAdminAccount);
 import accounts from "./routes/accounts.js";
 app.use("/api/accounts", accounts);
 
+import sessions from "./routes/sessions.js";
+app.use("/api/sessions", sessions);
+
+import grades from "./routes/grades.js";
+app.use("/api/grades", grades);
+
+import student from "./routes/student.js";
+app.use("/api/student", student);
+
 app.use((req, res) => {
   res.status(404).json({
     error: "404",

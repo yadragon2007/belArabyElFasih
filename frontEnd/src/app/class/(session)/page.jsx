@@ -8,12 +8,12 @@ import Footer from 'components/footer/footer';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChalkboardUser, faCirclePlus, faSchool, faSchoolCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import RightSide from "components/class/rightSide";
-import LinksNav from "components/class/nav"
 import SideBarContainer from "components/sideBar/sideBarContainer";
 import SideBarLinks from "components/sideBar/sideBarLinks";
 import { useRouter } from "next/navigation";
 import Loader from "components/loader/loader";
 import { useRef } from 'react';
+import AllSessions from "components/class/allSessions/allSessions";
 
 const Page = () => {
   const router = useRouter()
@@ -49,9 +49,9 @@ const Page = () => {
           <SideBarLinks icon={faCirclePlus} label={"Add Sessionsession"} href={"/class/add-session"} Aclass={""} />
           <SideBarLinks icon={faSchoolCircleCheck} label={"Active Sessions"} href={"/setting/acctive-sessions"} Aclass={""} />
         </SideBarContainer>
-        <RightSide>
-          <LinksNav active="sessions" />
-      
+        <RightSide title={"SESSIONS"} active={"sessions"}>
+
+          <AllSessions />
         </RightSide>
       </Body>
       <Footer />
