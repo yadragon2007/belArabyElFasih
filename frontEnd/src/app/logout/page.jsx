@@ -1,14 +1,15 @@
-"use client"
+"use server"
 import Footer from 'components/footer/footer';
 import Nav from 'components/nav/nav';
 import Link from 'next/link';
 import React from 'react';
 
-const removeToken = () => {
-  localStorage.removeItem("Token")
-}
+
 
 const logOut = () => {
+  const removeToken = () => {
+    localStorage.removeItem("Token")
+  }
   removeToken();
   return (
     <div className="row flex-column align-items-center" style={{ margin: "0" }}>

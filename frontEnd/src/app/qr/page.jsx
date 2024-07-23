@@ -1,10 +1,35 @@
 "use client"
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Html5QrcodeScanner } from 'html5-qrcode';
 
-import { Scanner } from '@yudiel/react-qr-scanner';
+const QrCodeScanner = () => {
+  useEffect(() => {
+    const html5QrcodeScanner = new Html5QrcodeScanner(
+      "reader",
+      { fps: 10, qrbox: { width: 250, height: 250 } },
+      false
+    );
 
-const Page = () => {
-  return <Scanner onScan={(result) => console.log(result)} />
-}
+    html5QrcodeScanner.render(
+      (decodedText) => {
+        console.log(decodedText);
+      },
+      (error) => {
+        console.warn(error);
+      }
+    );
 
-export default Page;
+    return () => {
+      html5QrcodeScanner.clear();
+    };
+  }, []);
+
+  return (
+    <div>
+      <div id="reader" style={{ width: '500px', height: '500px', position: 'relative', zIndex: 1 }}></div>
+      
+    </div>
+  );
+};
+
+export default QrCodeScanner;
