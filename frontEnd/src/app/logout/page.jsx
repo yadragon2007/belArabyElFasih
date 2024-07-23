@@ -8,7 +8,7 @@ import React from 'react';
 
 const logOut = () => {
   const removeToken = () => {
-    localStorage.removeItem("Token")
+    // localStorage.removeItem("Token")
   }
   removeToken();
   return (
