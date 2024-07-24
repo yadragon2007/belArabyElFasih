@@ -19,6 +19,7 @@ const QrCodeScanner = () => {
       (decodedText) => {
         console.log(decodedText);
         setdecoded(decodedText)
+        qrref.current.style.display = "none"
         router.push(`/${decodedText}`)
       },
       (error) => {
@@ -30,17 +31,11 @@ const QrCodeScanner = () => {
     };
 
   }, []);
-  const download = () => {
-    qrref.current.download()
-  }
+
   return (
     <div>
-      <div id="reader" style={{ width: '500px', height: '500px', position: 'relative', zIndex: 1 }}></div>
+      <div id="reader" ref={qrref} style={{ width: '500px', height: '500px', position: 'relative', zIndex: 1 }}></div>
       <p>{decoded}</p>
-      <QRCode ref={qrref} value='0' />
-      <button onClick={() => {
-        download()
-      }}>d</button>
     </div>
   );
 };
