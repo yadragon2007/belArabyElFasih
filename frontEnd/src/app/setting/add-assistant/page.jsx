@@ -16,10 +16,14 @@ import LinksNav from "components/setting/nav"
 import SideBarContainer from "components/sideBar/sideBarContainer";
 import SideBarLinks from "components/sideBar/sideBarLinks";
 import { faGears, faHouse, faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
+import Cookie from 'cookie-universal'
+
 
 // icons
 
 const Page = () => {
+  const cookies = Cookie()
+
   // check userData
   const router = useRouter()
 
@@ -38,12 +42,12 @@ const Page = () => {
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (!localStorage.getItem("Token")) router.push("/login")
+    if (!cookies.get("Token")) router.push("/login")
 
     fetch('http://localhost:8080/api/accounts/user', {
       method: "get", headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + localStorage.getItem("Token")
+        "Authorization": "Bearer " + cookies.get("Token")
 
       }
     })

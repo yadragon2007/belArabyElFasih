@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Cookie from 'cookie-universal'
 
 
 import Nav from 'components/nav/nav.jsx'
@@ -14,16 +15,18 @@ import Loader from 'components/loader/loader.jsx'
 
 function Profile() {
   const router = useRouter()
+  const cookies = Cookie()
+
   const [data, setData] = useState(null)
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (!localStorage.getItem("Token")) router.push("/login")
+    if (!cookies.get('Token')) router.push("/login")
 
     fetch('http://localhost:8080/api/accounts/user', {
       method: "get", headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + localStorage.getItem("Token")
+        "Authorization": "Bearer " + cookies.get('Token')
 
       }
     })

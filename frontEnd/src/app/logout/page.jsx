@@ -3,14 +3,16 @@ import Footer from 'components/footer/footer';
 import Nav from 'components/nav/nav';
 import Link from 'next/link';
 import React, { useEffect } from 'react';
+import Cookie from 'cookie-universal'
 
 
 
 const logOut = () => {
+  const cookies = Cookie()
   useEffect(() => {
     if (typeof window !== 'undefined') {
       // This code runs only in the browser
-      localStorage.removeItem("Token")
+      cookies.remove("Token")
     }
   }, []);
   return (

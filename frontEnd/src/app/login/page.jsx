@@ -9,11 +9,13 @@ import Footer from 'components/footer/footer.jsx';
 import Nav from 'components/nav/nav.jsx';
 import input from "components/inputAndLable/input.jsx"
 import Btn from "components/loginBtn/btn.jsx";
+import Cookie from 'cookie-universal'
+
 const { Input, sendData } = input;
 
 const Page = () => {
   const router = useRouter()
-
+  const cookies = Cookie()
   const [form, setForm] = useState({
     userName: '',
     password: '',
@@ -37,8 +39,12 @@ const Page = () => {
       })
 
       console.log(response.data);
-      localStorage.setItem("Token", response.data.Token)
-      // cookies().set('Token', response.data.Token)
+      // localStorage.setItem("Token", response.data.Token)
+      cookies.set('Token', response.data.Token, {
+        secure: true,
+        maxAge: 30 * 24 * 60 * 60
+      })
+
 
       router.push('/')
     } catch (error) {

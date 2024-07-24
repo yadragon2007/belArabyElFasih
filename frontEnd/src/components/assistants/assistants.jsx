@@ -6,10 +6,12 @@ import Loader from 'components/loader/loader';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Cookie from 'cookie-universal'
 
 
 
 const Assistants = () => {
+  const cookies = Cookie()
 
   // check userData
   const router = useRouter()
@@ -19,13 +21,12 @@ const Assistants = () => {
 
 
   useEffect(() => {
-    if (!localStorage.getItem("Token")) router.push("/login")
+    if (!cookies.get('Token')) router.push("/login")
 
     fetch('http://localhost:8080/api/accounts/user', {
       method: "get", headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + localStorage.getItem("Token")
-
+        "Authorization": "Bearer " + cookies.get('Token')
       }
     })
       .then((res) => res.json())
@@ -36,7 +37,7 @@ const Assistants = () => {
         axios.get("http://localhost:8080/api/accounts/users", {
           headers: {
             "Content-Type": "application/json",
-            'Authorization': `Bearer ${localStorage.getItem('Token')}`
+            'Authorization': `Bearer ${cookies.get('Token')}`
           }
         }).then((response) => {
           setAssistant(response.data)
@@ -62,7 +63,7 @@ const Assistants = () => {
       const index = assistants.find((assistant) => assistant._id === id)
       let newAssistants = assistants
       newAssistants.splice(index, 1)
-      setAssistant(newAssistants) 
+      setAssistant(newAssistants)
       console.log(assistants);
     } catch (error) {
       console.log(error);

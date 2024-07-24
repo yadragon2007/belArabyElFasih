@@ -17,21 +17,22 @@ import SideBarContainer from 'components/sideBar/sideBarContainer';
 import SideBarLinks from 'components/sideBar/sideBarLinks';
 import NavContainer from 'components/menuNav/navContainer';
 import NavLinks from 'components/menuNav/navLinks';
+import Cookie from 'cookie-universal'
 
 
 const Page = () => {
+  const cookies = Cookie()
   const router = useRouter()
   const [userData, setUserData] = useState(null)
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (!localStorage.getItem("Token")) router.push("/login")
+    if (!cookies.get("Token")) router.push("/login")
 
     fetch('http://localhost:8080/api/accounts/user', {
       method: "get", headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + localStorage.getItem("Token")
-
+        "Authorization": "Bearer " + cookies.get("Token")
       }
     })
       .then((res) => res.json())

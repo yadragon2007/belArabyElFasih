@@ -14,19 +14,21 @@ import { useRouter } from "next/navigation";
 import Loader from "components/loader/loader";
 import { useRef } from 'react';
 import AllSessions from "components/class/allSessions/allSessions";
+import Cookie from 'cookie-universal'
 
 const Page = () => {
   const router = useRouter()
+  const cookies = Cookie()
   const [userData, setUserData] = useState(null)
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (!localStorage.getItem("Token")) router.push("/login")
-
+    if (!cookies.get('Token')) router.push("/login")
+    //error 403 
     fetch('http://localhost:8080/api/accounts/user', {
       method: "get", headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + localStorage.getItem("Token")
+        "Authorization": "Bearer " + cookies.get('Token')
 
       }
     })

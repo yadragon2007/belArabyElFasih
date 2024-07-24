@@ -5,13 +5,16 @@ import Loader from 'components/loader/loader';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
+import Cookie from 'cookie-universal'
+
 
 
 const getSessions = async () => {
+  const cookies = Cookie()
   const sessions = await axios.get("http://localhost:8080/api/sessions/", {
     headers: {
       'Content-Type': 'application/json',
-      "Authorization": `Bearer ${localStorage.getItem("Token")}`
+      "Authorization": `Bearer ${cookies.get('token')}`
     }
 
   })
@@ -20,6 +23,8 @@ const getSessions = async () => {
 
 
 const AllSessions = () => {
+  const cookies = Cookie()
+
   const router = useRouter()
   const activeRef = useRef([])
   const [constSessions, setConstSessions] = useState()
@@ -32,7 +37,7 @@ const AllSessions = () => {
       axios.get("http://localhost:8080/api/sessions/", {
         headers: {
           'Content-Type': 'application/json',
-          "Authorization": `Bearer ${localStorage.getItem("Token")}`
+          "Authorization": `Bearer ${cookies.get('Token')}`
         }
       }).then((respons) => {
         const data = respons.data
