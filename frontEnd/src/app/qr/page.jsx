@@ -1,9 +1,11 @@
 "use client"
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Html5QrcodeScanner } from 'html5-qrcode';
 import { QRCode } from 'react-qrcode-logo';
+import { useRouter } from 'next/navigation'
 
 const QrCodeScanner = () => {
+  const router = useRouter()
   const [decoded, setdecoded] = useState("");
   const qrref = useRef(null)
   useEffect(() => {
@@ -17,6 +19,7 @@ const QrCodeScanner = () => {
       (decodedText) => {
         console.log(decodedText);
         setdecoded(decodedText)
+        router.push(`/${decodedText}`)
       },
       (error) => {
         console.warn(error);
