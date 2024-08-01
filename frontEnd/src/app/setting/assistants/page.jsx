@@ -34,7 +34,7 @@ const Page = () => {
             <LinksNav active="assistant" />
             <div className="card-body tab-content">
               <div className="tab-pane active" id="addAssistant">
-                <h6>ADD NEW ASSISTANTS</h6>
+                <h6>ASSISTANTS</h6>
                 <hr />
                 <div className="w-100 h-100 row justify-content-center" style={{ margin: "0" }} >
                   <Assistants />
