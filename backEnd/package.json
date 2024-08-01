@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "app.js",
   "type": "module",
+  "engines": {
+    "node": "20.15.1"
+  },
   "scripts": {
     "start": "nodemon app.js",
     "build":"node app.js"
