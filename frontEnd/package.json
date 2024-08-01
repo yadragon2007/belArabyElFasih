@@ -29,7 +29,6 @@
     "react-qrcode-logo": "^3.0.0",
     "swr": "^2.2.5"
   },
-  "proxy": "http://localhost:8080",
   "devDependencies": {
     "@types/bootstrap": "^5.2.10"
   }

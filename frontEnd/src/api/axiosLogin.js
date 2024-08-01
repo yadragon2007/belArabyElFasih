@@ -5,7 +5,7 @@ env.config();
 const cookies = Cookie();
 
 const AxiosLogin = axios.create({
-  baseURL: "http://localhost:8080/",
+  baseURL: process.env.DOMAIN,
   headers: {
     "Content-Type": "application/json",
   },
