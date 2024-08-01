@@ -1,11 +1,9 @@
 "use client"
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Html5QrcodeScanner } from 'html5-qrcode';
 import { QRCode } from 'react-qrcode-logo';
-import { useRouter } from 'next/navigation'
 
 const QrCodeScanner = () => {
-  const router = useRouter()
   const [decoded, setdecoded] = useState("");
   const qrref = useRef(null)
   useEffect(() => {
@@ -19,8 +17,6 @@ const QrCodeScanner = () => {
       (decodedText) => {
         console.log(decodedText);
         setdecoded(decodedText)
-        qrref.current.style.display = "none"
-        router.push(`/${decodedText}`)
       },
       (error) => {
         console.warn(error);
@@ -31,11 +27,17 @@ const QrCodeScanner = () => {
     };
 
   }, []);
-
+  const download = () => {
+    qrref.current.download()
+  }
   return (
     <div>
-      <div id="reader" ref={qrref} style={{ width: '500px', height: '500px', position: 'relative', zIndex: 1 }}></div>
+      <div id="reader" style={{ width: '500px', height: '500px', position: 'relative', zIndex: 1 }}></div>
       <p>{decoded}</p>
+      <QRCode ref={qrref} value='1' size={200} logoImage={"/img/amrGamalS.jpg"} logoWidth={200} logoOpacity={.4} />
+      <button onClick={() => {
+        download()
+      }}>d</button>
     </div>
   );
 };

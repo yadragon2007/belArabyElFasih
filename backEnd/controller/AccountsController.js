@@ -14,7 +14,7 @@ const add_account_post = async (req, res) => {
     let hashedPassword = await bcrypt.hash(data.password, salt);
     data.password = hashedPassword;
     // save
-    const newAccount = new Assistants({ ...data });
+    const newAccount = new Accounts({ ...data });
     // save the user
     await newAccount.save();
     res.status(201).send({ data: newAccount });
@@ -144,7 +144,7 @@ const updatedUser_put = async (req, res) => {
 const delete_user = async (req, res) => {
   const { id } = req.params;
   try {
-    await Assistants.findByIdAndDelete(id);
+    await Accounts.findByIdAndDelete(id);
     return res.status(200).send("account removed");
   } catch (error) {
     res.status(500).send({ message: error });

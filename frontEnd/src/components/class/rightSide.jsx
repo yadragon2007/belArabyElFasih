@@ -13,7 +13,7 @@ const RightSide = ({ children, title, active }) => {
           <div className="tab-pane fade show active " id="home">
             <h6>{title}</h6>
             <hr />
-            <div className="" style={{ textAlign: "center", justifyContent: "center", alignItems: "center" }}>
+            <div className="" style={{justifyContent: "center", alignItems: "center" }}>
               {children}
             </div>
           </div>

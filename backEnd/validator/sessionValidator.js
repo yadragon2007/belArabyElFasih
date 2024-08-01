@@ -110,9 +110,14 @@ const activeSession = [
     .withMessage("Session ID must be a valid Mongo ID")
     .custom(async (value) => {
       const session = await Sessions.findById(value);
-      if (!session) return Promise.reject(new Error("Session does not exist"));
+      if (!session)
+        return Promise.reject(new Error("Session does not exist" + session));
       else return;
     }),
+  body("examGrade")
+    .optional()
+    .isString()
+    .withMessage("Exam Grade must be a string"),
 ];
 
 const addStudent = [
@@ -170,21 +175,9 @@ const addStudent = [
     .withMessage("Home work is required")
     .isBoolean()
     .withMessage("Home work must be a boolean"),
-  body("quiz")
-    .notEmpty()
-    .withMessage("Quiz is required")
-    .isObject()
-    .withMessage("Quiz must be an object"),
-  body("quiz.maxGrade")
-    .notEmpty()
-    .withMessage("Max grade is required")
-    .isNumeric()
-    .withMessage("Max grade must be a number"),
-  body("quiz.studentGrade")
-    .notEmpty()
-    .withMessage("Student grade is required")
-    .isNumeric()
-    .withMessage("Student grade must be a number"),
+  body("studentExamGrade")
+    .isString()
+    .withMessage("Student grade must be a string"),
 ];
 export default {
   addSession,

@@ -24,7 +24,7 @@ const linksNav = ({ active }) => {
       id: "acctiveSessions",
       icon: faSchoolCircleCheck,
       title: "acctive sessions",
-      link: "/setting/acctive-sessions",
+      link: "/class/acctive-sessions",
       active: ""
     }
   ]

@@ -25,8 +25,8 @@ const addClass_post = async (req, res) => {
 
 const getAllClasses_get = async (req, res) => {
   try {
-    const fillter = req.params;
-    const sessions = await Sessions.find()
+    const filter = req.query;
+    const sessions = await Sessions.find(filter)
       .populate("grade")
       .populate({
         path: "history.students.studentId",
@@ -98,7 +98,7 @@ const updateClass_put = async (req, res) => {
 // @access  Public
 
 const activeSession_patch = async (req, res) => {
-  const { sessionId } = req.body;
+  const { sessionId, examGrade } = req.body;
   try {
     const session = await Sessions.findById(sessionId);
     if (!session.active) {
@@ -106,6 +106,7 @@ const activeSession_patch = async (req, res) => {
       newHistroy.push({
         Date: time.getCurrentDateInTimeZone("Egypt"),
         from: time.getCurrentTimeInTimeZone("Egypt"),
+        examGrade,
       });
       console.log(newHistroy);
       await Sessions.findByIdAndUpdate(sessionId, {
@@ -135,7 +136,7 @@ const activeSession_patch = async (req, res) => {
 // @access  Public
 
 const addStudentToSession_post = async (req, res) => {
-  const { sessionId, studentId, homeWork, quiz, userId } = req.body;
+  const { sessionId, studentId, homeWork, studentExamGrade, userId } = req.body;
   try {
     const session = await Sessions.findById(sessionId);
     const student = await Students.findById(studentId);
@@ -147,7 +148,10 @@ const addStudentToSession_post = async (req, res) => {
       Date: time.getCurrentDateInTimeZone("Egypt"),
       time: time.getCurrentTimeInTimeZone("Egypt"),
       homeWork,
-      quiz,
+      quiz: {
+        maxGrade: session.history[session.history.length - 1].examGrade,
+        studentGrade: studentExamGrade,
+      },
     };
     student.sessions.push(studentSessionData);
     await student.save();
@@ -157,7 +161,7 @@ const addStudentToSession_post = async (req, res) => {
       assistantId: userId,
       time: time.getCurrentTimeInTimeZone("Egypt"),
       homeWork,
-      quiz,
+      studentExamGrade,
     };
     session.history[session.history.length - 1].students.push(SessionData);
     await session.save();

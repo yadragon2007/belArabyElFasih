@@ -15,6 +15,7 @@ async function main() {
   await mongoose.connect(
     `mongodb+srv://${dataBase.userName}:${dataBase.password}@cluster0.skzhcxy.mongodb.net/belArabyElFasi7?retryWrites=true&w=majority&appName=Cluster0`
   );
+  // await mongoose.connect(`mongodb://localhost:27017/belArabyElFasi7`);
 }
 
 // cookies

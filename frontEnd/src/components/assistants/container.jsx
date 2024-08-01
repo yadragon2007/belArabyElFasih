@@ -1,5 +1,5 @@
 import Nav from 'components/nav/nav';
-import SideBar from 'components/setting/sideBar';
+// import SideBar from 'components/setting';
 import React from 'react';
 import LinksNav from "components/setting/nav";
 import Footer from 'components/footer/footer';
@@ -8,8 +8,10 @@ import Loader from 'components/loader/loader';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+import Cookies from "cookie-universal"
 
 const Container = ({ children }) => {
+  const cookie = Cookies()
   // check userData
   const router = useRouter()
 
@@ -17,12 +19,12 @@ const Container = ({ children }) => {
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (!localStorage.getItem("Token")) router.push("/login")
+    if (!cookie.get("Token")) router.push("/login")
 
     fetch('http://localhost:8080/api/accounts/user', {
       method: "get", headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + localStorage.getItem("Token")
+        "Authorization": "Bearer " + cookie.get("Token")
 
       }
     })

@@ -1,5 +1,5 @@
 "use client"
-import "../style.css"
+import "app/class/style.css"
 import Container from 'components/class/container';
 import Nav from 'components/nav/nav';
 import { useEffect, useState } from 'react';
@@ -15,6 +15,7 @@ import Loader from "components/loader/loader";
 import { useRef } from 'react';
 import AllSessions from "components/class/allSessions/allSessions";
 import Cookie from 'cookie-universal'
+import Axios from "api/axios";
 
 const Page = () => {
   const router = useRouter()
@@ -24,17 +25,9 @@ const Page = () => {
 
   useEffect(() => {
     if (!cookies.get('Token')) router.push("/login")
-    //error 403 
-    fetch('http://localhost:8080/api/accounts/user', {
-      method: "get", headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + cookies.get('Token')
-
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUserData(data.data)
+    Axios.get("/api/accounts/user")
+      .then((response) => {
+        setUserData(response.data)
         setLoading(false)
       })
   }, [])
@@ -49,7 +42,7 @@ const Page = () => {
         <SideBarContainer>
           <SideBarLinks icon={faChalkboardUser} label={"Sessions"} href={"/class"} Aclass={"active"} />
           <SideBarLinks icon={faCirclePlus} label={"Add Sessionsession"} href={"/class/add-session"} Aclass={""} />
-          <SideBarLinks icon={faSchoolCircleCheck} label={"Active Sessions"} href={"/setting/acctive-sessions"} Aclass={""} />
+          <SideBarLinks icon={faSchoolCircleCheck} label={"Active Sessions"} href={"/class/acctive-sessions"} Aclass={""} />
         </SideBarContainer>
         <RightSide title={"SESSIONS"} active={"sessions"}>
 

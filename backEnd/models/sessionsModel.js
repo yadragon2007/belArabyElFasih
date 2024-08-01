@@ -29,16 +29,14 @@ const sessionsSchema = new Schema(
         Date: String,
         from: String,
         to: String,
+        examGrade: { type: String, default: "noExam" },
         students: [
           {
             studentId: { type: Schema.Types.ObjectId, ref: "Students" },
             assistantId: { type: Schema.Types.ObjectId, ref: "Accounts" },
             time: String,
             homeWork: Boolean,
-            quiz: {
-              maxGrade: String,
-              studentGrade: String,
-            },
+            studentExamGrade: { type: String, default: "noExam" },
           },
         ],
       },

@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Cookie from 'cookie-universal'
-
+import axios from '../../api/axios.js'
 
 import Nav from 'components/nav/nav.jsx'
 import Footer from 'components/footer/footer'
@@ -11,6 +11,7 @@ import Card from 'components/homeLinks/homeLinks.jsx'
 import "bootstrap/dist/css/bootstrap.css"
 import "@flaticon/flaticon-uicons/css/all/all.css";
 import Loader from 'components/loader/loader.jsx'
+import Axios from '../../api/axios.js'
 
 
 function Profile() {
@@ -22,17 +23,9 @@ function Profile() {
 
   useEffect(() => {
     if (!cookies.get('Token')) router.push("/login")
-
-    fetch('http://localhost:8080/api/accounts/user', {
-      method: "get", headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + cookies.get('Token')
-
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data.data)
+    Axios.get("/api/accounts/user/")
+      .then((res) => {
+        setData(res.data.data);
         setLoading(false)
       })
   }, [])
@@ -48,8 +41,8 @@ function Profile() {
           <h1>welcome <span style={{ fontSize: "18px" }}>{data.fullName}</span></h1>
         </div>
         <div className="row col-12 justify-content-center justify-content-lg-between" style={{ gap: "0px" }}>
-          <Card link={"/class"} content={{ title: "ادارة الحصص", content: "145" }} />
-          <Card link={"/students"} content={{ title: "ادارة الطلاب", content: "145" }} />
+          <Card link={"/class"} content={{ title: "ادارة الحصص", icon: "fi fi-sr-workshop" }} />
+          <Card link={"/students"} content={{ title: "ادارة الطلاب", icon: "fi fi-ss-users-alt" }} />
           {data.admin ? (
             <Card link={"/setting"} content={{ title: "الأعدادات", icon: "fi fi-ss-settings" }} />
           ) : ("")}

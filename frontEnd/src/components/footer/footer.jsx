@@ -10,7 +10,7 @@ const Footer = () => {
           <p>
             ©{" "}
             <Link href="/" className="btn-link" target="_blank">
-              in-fluent-arabic 2.0
+              bel-araby-el-fasi7 1.0
             </Link>{" "}
             2024 . all right reserved.
           </p>

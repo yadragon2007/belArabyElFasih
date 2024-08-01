@@ -37,8 +37,8 @@ const studentsSchema = new Schema(
         time: String,
         homeWork: Boolean,
         quiz: {
-          maxGrade: String,
-          studentGrade: String,
+          maxGrade: { type: String, default: "noExam" },
+          studentGrade: { type: String, default: "noExam" },
         },
       },
     ],

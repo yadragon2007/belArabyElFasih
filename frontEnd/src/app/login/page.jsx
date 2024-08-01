@@ -2,6 +2,7 @@
 
 
 import axios from "axios";
+import AxiosLogin from "../../api/axiosLogin.js"
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'
 import "bootstrap/dist/css/bootstrap.css";
@@ -33,7 +34,7 @@ const Page = () => {
 
   async function login() {
     try {
-      const response = await axios.post("http://localhost:8080/api/accounts/login", {
+      const response = await AxiosLogin.post("/api/accounts/login", {
         userName: form.userName,
         password: form.password,
       })

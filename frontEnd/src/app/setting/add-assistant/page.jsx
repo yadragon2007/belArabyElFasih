@@ -17,6 +17,7 @@ import SideBarContainer from "components/sideBar/sideBarContainer";
 import SideBarLinks from "components/sideBar/sideBarLinks";
 import { faGears, faHouse, faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
 import Cookie from 'cookie-universal'
+import Axios from "api/axios";
 
 
 // icons
@@ -44,19 +45,10 @@ const Page = () => {
   useEffect(() => {
     if (!cookies.get("Token")) router.push("/login")
 
-    fetch('http://localhost:8080/api/accounts/user', {
-      method: "get", headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + cookies.get("Token")
-
-      }
+    Axios.get("/api/accounts/user").then((response) => {
+      setUserData(response.data.data)
+      setLoading(false)
     })
-      .then((res) => res.json())
-      .then((data) => {
-        setUserData(data.data)
-        // if (!data.data.admin) router.push("/login")
-        setLoading(false)
-      })
   }, [])
 
   if (isLoading) return <Loader />
@@ -71,18 +63,11 @@ const Page = () => {
 
   async function addAssistant() {
     try {
-      const response = await axios.post("http://localhost:8080/api/accounts/", {
+      const response = await Axios.post("/api/accounts/", {
         fullName: form.fullName,
         userName: form.userName,
         password: form.password,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-          "Authorization": "Bearer " + localStorage.getItem("Token")
-        }
       })
-
-      console.log(response.data);
 
       setForm({
         fullName: '',
@@ -90,6 +75,7 @@ const Page = () => {
         password: '',
       })
       setSuccess("assistant added successfully")
+      setValidation({ validation: "" })
     } catch (error) {
       console.log(error);
       setValidation({ validation: 'is-invalid' });

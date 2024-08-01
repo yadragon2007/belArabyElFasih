@@ -18,6 +18,7 @@ import SideBarLinks from 'components/sideBar/sideBarLinks';
 import NavContainer from 'components/menuNav/navContainer';
 import NavLinks from 'components/menuNav/navLinks';
 import Cookie from 'cookie-universal'
+import Axios from 'api/axios';
 
 
 const Page = () => {
@@ -29,18 +30,10 @@ const Page = () => {
   useEffect(() => {
     if (!cookies.get("Token")) router.push("/login")
 
-    fetch('http://localhost:8080/api/accounts/user', {
-      method: "get", headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + cookies.get("Token")
-      }
+    Axios.get("/api/accounts/user").then((response) => {
+      setUserData(response.data.data)
+      setLoading(false)
     })
-      .then((res) => res.json())
-      .then((data) => {
-        setUserData(data.data)
-        // if (!data.data.admin) router.push("/login")
-        setLoading(false)
-      })
   }, [])
 
   if (isLoading) return <Loader />
