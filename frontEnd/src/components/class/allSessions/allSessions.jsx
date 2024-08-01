@@ -254,7 +254,7 @@ const AllSessions = () => {
               <Link href="" className="btn btn-primary">
                 <FontAwesomeIcon icon={faPen} />
               </Link>
-              <Link href="" className="btn btn-primary">
+              <Link href={"/class/" + session._id} className="btn btn-primary">
                 <FontAwesomeIcon icon={faCircleInfo} />
               </Link>
             </div>

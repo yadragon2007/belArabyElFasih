@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 export const metadata = {
   title: "Dragon",
   icons: {
-    "icon": "./img/logo.png"
+    "icon": "/img/logo.png"
   }
 }
 
