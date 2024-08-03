@@ -104,7 +104,7 @@ const activeSessions = () => {
               <p className="col-12 row justify-content-center" style={{ margin: "0" }}>{session.hour} : {session.min} {session.AmPm}</p>
               <p className="col-12 row justify-content-center" style={{ margin: "0" }}>{session.grade.name}</p>
             </div>
-            <div className=" d-flex justify-content-around align-items-center col-md-12 col-lg-3">
+            <div className=" d-flex justify-content-around align-items-center col-md-12 col-lg-2">
 
 
 
@@ -112,23 +112,14 @@ const activeSessions = () => {
               <Link href={"/class/acctive-sessions/" + session._id} className="btn btn-primary">
                 <FontAwesomeIcon icon={faUserPlus} />
               </Link>
-              <Link href="" className="btn btn-primary">
-                <FontAwesomeIcon icon={faPen} />
+
+
+
+              <Link className="btn btn-primary" href={"/class/" + session._id} >
+                <FontAwesomeIcon icon={faCircleInfo} />
               </Link>
 
 
-              <div className="dropdown show">
-                <a className="btn btn-primary" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <FontAwesomeIcon icon={faCircleInfo} />
-                </a>
-
-                <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-
-                  <button className="dropdown-item bg-danger" onClick={(e) => { activeSession(session._id, index) }} id={session._id} >
-                    انهاء الحصة
-                  </button>
-                </div>
-              </div>
             </div>
           </div >
         )

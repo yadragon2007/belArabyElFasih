@@ -51,7 +51,7 @@ const getSession = [
     }),
 ];
 const deleteSession = [
-  body("sessionId")
+  param("sessionId")
     .notEmpty()
     .withMessage("sessionId is required")
     .isString()

@@ -3,10 +3,7 @@ import "./style.css"
 import "bootstrap/dist/css/bootstrap.css";
 
 export const metadata = {
-  title: "Dragon",
-  icons: {
-    "icon": "/img/logo.png"
-  }
+  title: "Bel Araby El Fasi7",
 }
 
 

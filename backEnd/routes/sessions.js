@@ -41,7 +41,7 @@ router.get(
 // @desc    delete session
 // @access  Public
 router.delete(
-  "/",
+  "/:sessionId",
   authorization.UserAuthorization,
   sessionValidator.deleteSession,
   localValidationFunction.errorHandler,

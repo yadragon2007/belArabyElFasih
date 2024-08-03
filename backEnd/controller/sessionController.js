@@ -67,7 +67,7 @@ const getAnClass_get = async (req, res) => {
 // @access  Public
 
 const deleteClass_delete = async (req, res) => {
-  let { sessionId } = req.body;
+  let { sessionId } = req.params;
   try {
     await Sessions.findByIdAndDelete(sessionId);
     res.status(200).json({ msg: "class deleted successfully" });
