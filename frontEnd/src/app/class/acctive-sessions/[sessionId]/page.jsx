@@ -54,7 +54,10 @@ const Page = ({ params }) => {
   }, [])
 
 
-  if (isLoading) return <Loader />
+  if (isLoading) return <>
+    <div id="reader"></div>
+    <Loader />
+  </>
   if (!userData) return router.push("/login")
 
 
