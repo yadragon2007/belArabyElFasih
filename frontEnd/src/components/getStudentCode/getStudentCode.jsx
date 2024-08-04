@@ -19,41 +19,25 @@ const GetStudentCode = ({ sessionId, successPageUrl }) => {
   const router = useRouter()
   const cookies = Cookie()
 
-  const [userData, setUserData] = useState(null)
-  const [session, setSession] = useState(null);
-  const [isLoading, setLoading] = useState(true)
+
   const [isError, setError] = useState("")
   const [code, setCode] = useState("");
+
   useEffect(() => {
-    if (!cookies.get('Token')) router.push("/login")
-    Axios.get("/api/accounts/user")
-      .then((response) => {
-        setUserData(response.data)
-      })
-    Axios.get(`/api/sessions/${sessionId}`)
-      .then((response) => {
-        setSession(response.data)
-        setLoading(false)
+    const html5QrcodeScanner = new Html5QrcodeScanner(
+      "reader",
+      { fps: 24, qrbox: { width: 250, height: 250 } },
+      false
+    );
 
-        const html5QrcodeScanner = new Html5QrcodeScanner(
-          "reader",
-          { fps: 24, qrbox: { width: 250, height: 250 } },
-          false
-        );
-
-        html5QrcodeScanner.render(
-          success,
-          (error) => {
-            console.warn(error);
-          }
-        );
-
-      })
+    html5QrcodeScanner.render(
+      success,
+      (error) => {
+        console.warn(error);
+      }
+    );
   }, [])
 
-
-  if (isLoading) return <Loader />
-  if (!userData) return router.push("/login")
 
 
 
