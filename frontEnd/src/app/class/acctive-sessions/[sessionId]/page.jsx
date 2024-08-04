@@ -37,19 +37,20 @@ const Page = ({ params }) => {
       .then((response) => {
         setSession(response.data)
         setLoading(false)
-      })
-    const html5QrcodeScanner = new Html5QrcodeScanner(
-      "reader",
-      { fps: 24, qrbox: { width: 250, height: 250 } },
-      false
-    );
+        const html5QrcodeScanner = new Html5QrcodeScanner(
+          "reader",
+          { fps: 24, qrbox: { width: 250, height: 250 } },
+          false
+        );
 
-    html5QrcodeScanner.render(
-      success,
-      (error) => {
-        console.warn(error);
-      }
-    );
+        html5QrcodeScanner.render(
+          success,
+          (error) => {
+            console.warn(error);
+          }
+        );
+      })
+
   }, [])
 
 
