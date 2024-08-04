@@ -14,6 +14,7 @@ import Loader from "components/loader/loader";
 import Cookie from 'cookie-universal'
 import Axios from "api/axios";
 import { Html5QrcodeScanner } from 'html5-qrcode';
+import StudentCodeQr from "components/studentCodeQr/studentCodeQr";
 
 const Page = () => {
   const router = useRouter()
@@ -74,7 +75,7 @@ const Page = () => {
           <SideBarLinks icon={faMagnifyingGlass} label={"Get A Student"} href={"/students/search"} Aclass={""} />
         </SideBarContainer>
         <RightSide title={"SEARCH"} active={"addStudent"}>
-          <div id="reader" style={{ width: '100%', height: "250", position: 'relative', zIndex: 1 }}></div>
+          <StudentCodeQr success={success} />
           <p>{isError}</p>
           <div className="w-100 d-flex justify-content-between align-items-center" style={{ margin: "20px 0" }}>
             <div className="col-4" style={{ borderBottom: "1px solid #fff" }}></div>
