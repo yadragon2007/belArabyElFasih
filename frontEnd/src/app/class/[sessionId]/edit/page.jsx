@@ -56,7 +56,7 @@ const Page = ({ params }) => {
         grade: grades[form.grade]._id,
       })
       if (response.status === 200) {
-        setValidation("session updated successfully")
+        setValidation("session updated successfully") 
       }
       else {
         setValidation("there is some thing wrong in your data")
@@ -104,7 +104,7 @@ const Page = ({ params }) => {
             <SideBarLinks icon={faCirclePlus} label={"Add Sessionsession"} href={"/class/add-session"} Aclass={""} />
             <SideBarLinks icon={faSchoolCircleCheck} label={"Active Sessions"} href={"/class/acctive-sessions"} Aclass={""} />
           </SideBarContainer>
-          <RightSide title={"SESSIONS"} active={"addSessions"}>
+          <RightSide title={"SESSIONS"} active={"sessions"}>
             <ClassForm >
               <div className="form-group w-100 d-flex flex-column flex-sm-row justify-content-between align-items-start" style={{ gap: "10px" }}>
                 <div className="dropdown">
