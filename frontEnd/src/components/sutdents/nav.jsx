@@ -16,7 +16,7 @@ const linksNav = ({ active }) => {
       id: "addStudent",
       icon: faUserPlus,
       title: "Add Student",
-      link: "/students/add-stydent",
+      link: "/students/addStudent",
       active: ""
     },
     {
@@ -30,7 +30,7 @@ const linksNav = ({ active }) => {
       id: "GetAStudent",
       icon: faMagnifyingGlass,
       title: "Get A Student",
-      link: "/students/acctive-sessions",
+      link: "/students/search",
       active: ""
     }
   ]
