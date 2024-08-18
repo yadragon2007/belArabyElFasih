@@ -233,7 +233,7 @@ const AllSessions = () => {
               <p className="col-12 row justify-content-center" style={{ margin: "0" }}>{session.hour} : {session.min} {session.AmPm}</p>
               <p className="col-12 row justify-content-center" style={{ margin: "0" }}>{session.grade.name}</p>
             </div>
-            <div className=" d-flex justify-content-around align-items-center col-3 col-lg-3" style={{ gap: "10px" }}>
+            <div className=" d-flex justify-content-center  align-items-center col-3 col-lg-3" style={{ gap: "10px" }}>
 
               {session.active ? (
                 <button data-toggle="modal" data-target="#unActiveModal" ref={el => activeRef.current[index] = el} onClick={(e) => {

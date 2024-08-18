@@ -6,14 +6,14 @@ import LinksNav from "components/class/nav"
 
 const RightSide = ({ children, title, active }) => {
   return (
-    <div className="col-md-8">
-      <div className="card">
+    <div className="col-12 col-md-8" style={{ padding: "0" }}>
+      <div className="card  ">
         <LinksNav active={active} />
         <div className="card-body tab-content">
           <div className="tab-pane fade show active " id="home">
             <h6>{title}</h6>
             <hr />
-            <div className="" style={{justifyContent: "center", alignItems: "center" }}>
+            <div className="" style={{ justifyContent: "center", alignItems: "center" }}>
               {children}
             </div>
           </div>
