@@ -9,7 +9,7 @@ import Container from 'components/class/container';
 import Nav from "components/nav/nav";
 import Footer from "components/footer/footer";
 import Body from "components/class/body";
-import RightSide from "components/class/rightSide";
+import RightSide from "components/sutdents/rightSide";
 import SideBarContainer from "components/sideBar/sideBarContainer";
 import SideBarLinks from "components/sideBar/sideBarLinks";
 import { faChalkboardUser, faCirclePlus, faSchoolCircleCheck, faUserPen } from "@fortawesome/free-solid-svg-icons";
@@ -92,12 +92,12 @@ const Page = ({ params }) => {
       <Nav />
       <Body>
         <SideBarContainer>
-          <SideBarLinks icon={faChalkboardUser} label={"Sessions"} href={"/class"} Aclass={""} />
-          <SideBarLinks icon={faCirclePlus} label={"Add Sessionsession"} href={"/class/add-session"} Aclass={""} />
+          <SideBarLinks icon={faChalkboardUser} label={"Students"} href={"/students"} Aclass={""} />
+          <SideBarLinks icon={faCirclePlus} label={"Add Students"} href={"/students/addStudent"} Aclass={"active"} />
           <SideBarLinks icon={faUserPen} label={"Update A Student"} href={"/students/update"} Aclass={""} />
-          <SideBarLinks icon={faSchoolCircleCheck} label={"Active Sessions"} href={"/class/acctive-sessions"} Aclass={"active"} />
+          <SideBarLinks icon={faSchoolCircleCheck} label={"Search"} href={"/students/search"} Aclass={""} />
         </SideBarContainer>
-        <RightSide title={"ADD STUDENT"} active={"acctiveSessions"}>
+        <RightSide title={"ADD STUDENT"} active={"addStudent"}>
           <ClassForm >
 
             <div className="form-group">

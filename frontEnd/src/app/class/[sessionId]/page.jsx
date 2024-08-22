@@ -16,8 +16,9 @@ import Cookie from 'cookie-universal'
 import Axios from "api/axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-
-
+import html2canvas from "html2canvas";
+const { jsPDF } = require("jspdf"); // will automatically load the node version
+import XLSX from "xlsx";
 
 const Page = ({ params }) => {
   const router = useRouter()
@@ -35,6 +36,8 @@ const Page = ({ params }) => {
     to: "",
     examGrade: "",
     students: [],
+    _id: "",
+    index: ""
   })
   const [session, setSession] = useState({
     _id: "",
@@ -101,7 +104,25 @@ const Page = ({ params }) => {
       console.log(error)
     }
   }
-
+  const printReportOfSpecific = () => {
+    // const sheetData = `
+    //  <table><tbody>
+    //   <tr><td colSpan="3">${daysOfWeek[session.day]} ${sessionInfo.Date} ${session.grade.name}</td></tr>
+    //   <tr><td colSpan="3">${session.hour} : ${session.min} ${session.AmPm}</td></tr>
+    //   <tr><td>Author</td><td>ID</td><td>你好!</td></tr>
+    //   <tr><td>SheetJS</td><td>7262</td><td>வணக்கம்!</td></tr>
+    //   <tr><td colSpan="3">
+    //     <a href="//sheetjs.com">Powered by SheetJS</a>
+    //   </td></tr>
+    // </tbody></table>
+    // `
+    // const doc = XLSX.utils.json_to_sheet([
+    //   {
+    //     "Author": "SheetJS",
+    //   }
+    // ])
+    // console.log(doc);
+  }
   return (
     <Container>
       <Nav />
@@ -208,6 +229,15 @@ const Page = ({ params }) => {
                     data-dismiss="modal"
                   >
                     اغلاق
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={() => {
+                      printReportOfSpecific()
+                    }}
+                  >
+                    طباعة تقرير
                   </button>
                 </div>
               </div>
@@ -428,7 +458,7 @@ const Page = ({ params }) => {
                           )
                         }
                         <td style={{ textAlign: "center", verticalAlign: "middle" }}><button data-toggle="modal" data-target="#infoSession" onClick={(e) => {
-                          setSessionInfo(histroySession)
+                          setSessionInfo({ ...histroySession, index })
                         }} className="btn btn-primary"><FontAwesomeIcon icon={faCircleInfo} /></button></td>
                       </tr>
                     )
@@ -441,7 +471,7 @@ const Page = ({ params }) => {
         </RightSide>
       </Body>
       <Footer />
-    </Container>
+    </Container >
   );
 }
 
