@@ -64,7 +64,8 @@ const Page = ({ params }) => {
   const deleteStudent = async () => {
     try {
       await Axios.delete(`api/student/${params.studentCode}`)
-      router.push("/students/search")
+
+      router.back()
     } catch (error) {
       console.log(error);
     }
@@ -190,6 +191,7 @@ const Page = ({ params }) => {
                 <div className="modal-footer">
                   <button
                     type="button"
+                    data-dismiss="modal"
                     className="btn btn-danger"
                     onClick={() => deleteStudent()}
                   >
