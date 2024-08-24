@@ -75,12 +75,11 @@ const Page = ({ params }) => {
       <Nav />
       <Body>
         <SideBarContainer>
-          <SideBarLinks icon={faUsers} label={"Students"} href={"/students"} Aclass={""} />
+          <SideBarLinks icon={faUsers} label={"Students"} href={"/students"} Aclass={"active"} />
           <SideBarLinks icon={faUserPlus} label={"Add Student"} href={"/students/addStudent"} Aclass={""} />
           <SideBarLinks icon={faUserPen} label={"Update A Student"} href={"/students/update"} Aclass={""} />
-          <SideBarLinks icon={faMagnifyingGlass} label={"Get A Student"} href={"/students/search"} Aclass={"active"} />
         </SideBarContainer>
-        <RightSide title={student.fullName} active={"GetAStudent"}>
+        <RightSide title={student.fullName} active={"Students"}>
 
 
 

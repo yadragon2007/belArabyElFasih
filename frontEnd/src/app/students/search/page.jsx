@@ -55,12 +55,11 @@ const Page = () => {
       <Nav />
       <Body>
         <SideBarContainer>
-          <SideBarLinks icon={faUsers} label={"Students"} href={"/students"} Aclass={""} />
+          <SideBarLinks icon={faUsers} label={"Students"} href={"/students"} Aclass={"active"} />
           <SideBarLinks icon={faUserPlus} label={"Add Student"} href={"/students/addStudent"} Aclass={""} />
           <SideBarLinks icon={faUserPen} label={"Update A Student"} href={"/students/update"} Aclass={""} />
-          <SideBarLinks icon={faMagnifyingGlass} label={"Get A Student"} href={"/students/search"} Aclass={"active"} />
         </SideBarContainer>
-        <RightSide title={"SEARCH"} active={"GetAStudent"}>
+        <RightSide title={"SEARCH"} active={"Students"}>
           <StudentCodeQr success={success} />
           <p>{isError}</p>
           <div className="w-100 d-flex justify-content-between align-items-center" style={{ margin: "20px 0" }}>

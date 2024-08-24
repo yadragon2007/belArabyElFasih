@@ -26,13 +26,6 @@ const linksNav = ({ active }) => {
       link: "/students/update",
       active: ""
     },
-    {
-      id: "GetAStudent",
-      icon: faMagnifyingGlass,
-      title: "Get A Student",
-      link: "/students/search",
-      active: ""
-    }
   ]
   const index = links.findIndex((link) => link.id == active)
   links[index].active = "active"

@@ -14,6 +14,7 @@ import Loader from "components/loader/loader";
 import Cookie from 'cookie-universal'
 import Axios from "api/axios";
 import AllStudents from "components/sutdents/allStudents";
+import Link from "next/link";
 const Page = () => {
   const router = useRouter()
   const cookies = Cookie()
@@ -26,7 +27,8 @@ const Page = () => {
       .then((response) => {
         setUserData(response.data)
         setLoading(false)
-      })
+      });
+  
   }, [])
 
   if (isLoading) return <Loader />
@@ -40,9 +42,10 @@ const Page = () => {
           <SideBarLinks icon={faUsers} label={"Students"} href={"/students"} Aclass={"active"} />
           <SideBarLinks icon={faUserPlus} label={"Add Student"} href={"/students/addStudent"} Aclass={""} />
           <SideBarLinks icon={faUserPen} label={"Update A Student"} href={"/students/update"} Aclass={""} />
-          <SideBarLinks icon={faMagnifyingGlass} label={"Get A Student"} href={"/students/search"} Aclass={""} />
         </SideBarContainer>
         <RightSide title={"STUDENTS"} active={"Students"}>
+        
+
           <AllStudents />
         </RightSide>
       </Body>

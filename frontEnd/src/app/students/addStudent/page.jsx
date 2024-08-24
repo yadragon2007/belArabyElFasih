@@ -72,7 +72,6 @@ const Page = () => {
           <SideBarLinks icon={faUsers} label={"Students"} href={"/students"} Aclass={""} />
           <SideBarLinks icon={faUserPlus} label={"Add Student"} href={"/students/addStudent"} Aclass={"active"} />
           <SideBarLinks icon={faUserPen} label={"Update A Student"} href={"/students/update"} Aclass={""} />
-          <SideBarLinks icon={faMagnifyingGlass} label={"Get A Student"} href={"/students/search"} Aclass={""} />
         </SideBarContainer>
         <RightSide title={"SEARCH"} active={"addStudent"}>
           <StudentCodeQr success={success} />

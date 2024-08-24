@@ -95,7 +95,6 @@ const Page = ({ params }) => {
           <SideBarLinks icon={faChalkboardUser} label={"Students"} href={"/students"} Aclass={""} />
           <SideBarLinks icon={faCirclePlus} label={"Add Students"} href={"/students/addStudent"} Aclass={"active"} />
           <SideBarLinks icon={faUserPen} label={"Update A Student"} href={"/students/update"} Aclass={""} />
-          <SideBarLinks icon={faSchoolCircleCheck} label={"Search"} href={"/students/search"} Aclass={""} />
         </SideBarContainer>
         <RightSide title={"ADD STUDENT"} active={"addStudent"}>
           <ClassForm >
