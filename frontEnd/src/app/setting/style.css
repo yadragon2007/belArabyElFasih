@@ -53,3 +53,11 @@
 .shadow-none {
   box-shadow: none!important;
 }
+
+.importantLinks{
+  transition: .25s;
+}
+.importantLinks:hover{
+  text-decoration: underline;
+  /* color: rgb(0, 138, 218); */
+}
