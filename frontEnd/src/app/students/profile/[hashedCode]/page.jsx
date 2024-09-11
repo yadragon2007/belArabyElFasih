@@ -46,10 +46,8 @@ const Page = ({ params }) => {
         const sessions = response.data.sessions.reverse()
         setSessions(sessions)
         setLoading(false)
-
-        console.log(response.data);
-      }).catch(() => {
-        router.push("/login")
+      }).catch((error) => {
+        console.log(error);
       })
 
   }, [])
@@ -60,7 +58,7 @@ const Page = ({ params }) => {
     <Container>
       <Nav />
       <Body>
-      
+
         <RightSide title={student.fullName}>
 
 
@@ -179,7 +177,7 @@ const Page = ({ params }) => {
             </div>
           </div>
 
-          
+
           <hr />
           <div className=" table-responsive-sm">
             <table className="table w-100 text-light">
