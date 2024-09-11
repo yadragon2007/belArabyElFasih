@@ -46,8 +46,8 @@ const Page = ({ params }) => {
         const sessions = response.data.sessions.reverse()
         setSessions(sessions)
         setLoading(false)
-      }).catch((error) => {
-        console.log(error);
+      }).catch(() => {
+        router.push("/students/profile/")
       })
 
   }, [])
