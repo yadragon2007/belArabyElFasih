@@ -35,6 +35,15 @@ router.get(
   studentController.studentCode_get
 );
 
+// @route   GET api/student/:code/public
+// @desc    student code
+// @access  Public
+router.get(
+  "/:code/public",
+  studentController.studentCode_get
+);
+
+
 // @route   PUT api/student/:code
 // @desc    update an student
 // @access  Public
